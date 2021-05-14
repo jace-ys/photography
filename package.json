@@ -8,12 +8,14 @@
     "prettier": "prettier --write \"public/**/*.html\"",
     "build-dev": "hugo -D && npm run prettier",
     "build": "hugo && npm run prettier",
-    "serve": "serve public"
+    "serve": "serve public",
+    "cms": "netlify-cms-proxy-server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "netlify-cms-proxy-server": "^1.3.14",
     "prettier": "^2.3.0",
     "serve": "^11.3.2"
   }
