@@ -1,0 +1,18 @@
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="footer-copy">&copy; {{ .Site.Params.Copyright }} {{ dateFormat "2006" now }}</p>
+      </div>
+      <div class="col-md-6">
+        <ul class="footer-social">
+        {{ range .Site.Params.social }}
+          <li>
+            <a href="{{ .href }}"><ion-icon name="{{ .ionicon }}"></ion-icon></a>
+          </li>
+        {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{ partial "banner.html" . }}
+<section class="section">
+  <div class="container">
+  {{ range $idx, $page := .RegularPages.ByDate.Reverse }}
+    {{ if $idx }}
+    <hr>
+    {{ end }}
+    <h4>{{ .Title | title }}</h4>
+    <div class="post--content">
+      {{ .Content }}
+    </div>
+  {{ end }}
+  </div>
+</section>
+{{ end }}

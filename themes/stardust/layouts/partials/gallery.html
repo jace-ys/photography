@@ -1,0 +1,34 @@
+<section class="section">
+  <div class="container gallery">
+    <div class="masonry" data-col-sm="2" data-col-xs="1" data-gap="30">
+      <div class="grid">
+        <div class="grid-sizer"></div>
+        {{ $paginator := .Paginator }}
+        {{ range $paginator.Pages.ByDate.Reverse }}
+          {{ $src := .Params.cover }}
+          {{ $url := urls.Parse $src }}
+          {{ if (eq $url.Scheme "") }}
+            {{ $src = path.Join "/" (path.Join .File.Dir $src) }}
+          {{ end }}
+          <div class="grid-item">
+            <div class="grid-item--content">
+              <div class="album">
+                <a href="{{ .RelPermalink }}">
+                  <div class="hoverbox ef-move-right">
+                    <div class="hoverbox-front">
+                      <img src="{{ $src }}" alt="{{ .Title | title }}" />
+                    </div>
+                    <div class="hoverbox-back">
+                      <h2 class="album-title">{{ .Title | title }}</h2>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ template "_internal/pagination.html" . }}
+  </div>
+</section>

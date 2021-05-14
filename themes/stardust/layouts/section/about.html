@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{ partial "banner.html" . }}
+<section class="section">
+	<div class="container" id="about">
+		<div class="row">
+			<div class="col-md-6 col-lg-5">
+				<img src="{{ .Params.image }}" alt="Me">
+			</div>
+			<div class="col-md-6 col-lg-7">
+				<h4>{{ .Params.name }}</h4>
+				{{ .Content }}
+			</div>
+		</div>
+	</div>
+</section>
+{{ end }}

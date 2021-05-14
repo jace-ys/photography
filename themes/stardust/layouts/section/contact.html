@@ -1,0 +1,61 @@
+{{ define "main" }}
+	{{ partial "banner.html" . }}
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+				{{ if .Params.location }}
+					<div class="contact">
+						<div class="contact--icon">
+							<ion-icon name="location-outline"></ion-icon>
+						</div>
+						<h3 class="contact--title">Based in</h3>
+						<div class="contact--text">{{ .Params.location }}</div>
+					</div>
+				{{ end }}
+				{{ if .Params.email }}
+					<div class="contact">
+						<div class="contact--icon">
+							<ion-icon name="mail"></ion-icon>
+						</div>
+						<h3 class="contact--title">Email</h3>
+						<div class="contact--text">
+							<a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a>
+						</div>
+					</div>
+				{{ end }}
+				{{ if .Params.instagram }}
+					<div class="contact">
+						<div class="contact--icon">
+							<ion-icon name="logo-instagram"></ion-icon>
+						</div>
+						<h3 class="contact--title">Instagram</h3>
+						<div class="contact--text">
+							<a href="https://instagram.com/{{ .Params.instagram }}">@{{ .Params.instagram }}</a>
+						</div>
+					</div>
+				{{ end }}
+				</div>
+				<div class="col-md-8">
+					<form class="form-wrapper" name="contact" method="POST">
+						<div class="form-item form-item--half">
+							<input class="form-control" type="text" name="name" placeholder="Name" required />
+						</div>
+						<div class="form-item form-item--half">
+							<input class="form-control" type="email" name="email" placeholder="Email" required />
+						</div>
+						<div class="form-item">
+							<input class="form-control" type="text" name="subject" placeholder="Subject" required />
+						</div>
+						<div class="form-item">
+							<textarea class="form-control" name="message" placeholder="Message" required></textarea>
+						</div>
+						<div class="form-item">
+							<button class="md-btn md-btn--primary md-btn--lg" type="submit">Send message</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+{{ end }}

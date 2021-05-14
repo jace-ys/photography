@@ -1,0 +1,20 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --write \"public/**/*.html\"",
+    "build-dev": "hugo -D && npm run prettier",
+    "build": "hugo && npm run prettier",
+    "serve": "serve public"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^2.3.0",
+    "serve": "^11.3.2"
+  }
+}

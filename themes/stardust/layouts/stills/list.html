@@ -1,0 +1,20 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <div class="page-header">
+      <h2 class="page-header--title typing">
+        {{ .Params.headline }}<br>
+        <div class="typed--content">
+          <div class="typed--strings">
+          {{ range .Params.typed }}
+            <span>{{ . }}</span>
+          {{ end }}
+          </div>
+          <span class="typed"></span>
+        </div>
+      </h2>
+    </div>
+  </div>
+</section>
+{{ partial "gallery.html" . }}
+{{ end }}
