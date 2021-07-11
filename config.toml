@@ -1,11 +1,10 @@
 baseURL = "https://jaceys.me"
-title = "Jaceys | Photographer & Filmmaker"
+title = "Jaceys | Photography & Travel"
 theme = "stardust"
 paginate = 20
 
 [params]
-description = """Jaceys - Freelance travel photographer and filmmaker based in the UK,
-dedicated to producing content based around landscapes, adventure and lifestyle."""
+description = """Jaceys - Freelance travel photographer based in the UK, dedicated to capturing moments based around landscapes, lifestyle and adventure."""
 copyright = "Jaceys"
 
   [[params.social]]

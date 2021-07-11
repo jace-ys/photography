@@ -20,9 +20,10 @@
 			var typed = new Typed(".typed", {
 				stringsElement: $(this).find(".typed--strings")[0],
 				typeSpeed: 30,
-				startDelay: 2000,
-				fadeOut: true,
-				loop: true
+				backSpeed: 15,
+				startDelay: 1500,
+				smartBackspace: true,
+				loop: true,
 			});
 		});
 	};
