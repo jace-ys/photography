@@ -85,12 +85,6 @@ hr {
   }
 }
 
-@media screen and (min-width: 992px) {
-  .container {
-    width: 85vw;
-  }
-}
-
 /* Typography */
 
 body {
@@ -1696,6 +1690,12 @@ li.page-item.active a {
 
 #about img {
   margin-bottom: 20px;
+}
+
+@media screen and (min-width: 992px) {
+  #about img {
+    padding-right: 15px;
+  }
 }
 
 /* Contact */

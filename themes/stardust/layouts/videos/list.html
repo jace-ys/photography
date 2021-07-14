@@ -2,7 +2,7 @@
 {{ partial "banner.html" . }}
 <section class="section">
   <div class="container">
-  {{ range $idx, $page := .RegularPages.ByDate.Reverse }}
+    {{ range $idx, $page := .RegularPages.ByDate.Reverse }}
     {{ if $idx }}
     <hr>
     {{ end }}
@@ -10,7 +10,7 @@
     <div class="post--content">
       {{ .Content }}
     </div>
-  {{ end }}
+    {{ end }}
   </div>
 </section>
 {{ end }}

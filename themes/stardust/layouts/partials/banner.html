@@ -1,18 +1,18 @@
 <section class="section">
   <div class="container">
     <div class="page-header">
-    {{ if isset .Params "metadata" }}
+      {{ if isset .Params "metadata" }}
       <div class="page-header--meta">
         <span class="date">{{ dateFormat "2 Jan 2006" .Date }}</span>
-      {{ if .Params.metadata.author }}
+        {{ if .Params.metadata.author }}
         <span class="author">by <a href="#">{{ .Params.metadata.author | title }}</a></span>
-      {{ end }}
+        {{ end }}
       </div>
-    {{ end}}
+      {{ end}}
       <h2 class="page-header--title">{{ .Title | title }}</h2>
-    {{ if .Description }}
+      {{ if .Description }}
       <p class="page-header--subtitle">{{ .Description }}</p>
-    {{ end }}
+      {{ end }}
       <div class="page-header--divider"></div>
     </div>
   </div>

@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
-  {{ partial "head.html" . }}
-  <body>
-    <div id="preloader">
-      <div id="loader"></div>
+{{ partial "head.html" . }}
+
+<body>
+  <div id="preloader">
+    <div id="loader"></div>
+  </div>
+  <div id="root">
+    {{ partial "header.html" . }}
+    <div id="content">
+      {{ block "main" . }}{{ end }}
     </div>
-    <div id="root">
-      {{ partial "header.html" . }}
-      <div id="content">
-        {{ block "main" . }}{{ end }}
-      </div>
-      {{ partial "footer.html" . }}
-    </div>
-    {{ partial "scripts.html" . }}
-  </body>
+    {{ partial "footer.html" . }}
+  </div>
+  {{ partial "scripts.html" . }}
+</body>
+
 </html>

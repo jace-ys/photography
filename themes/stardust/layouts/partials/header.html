@@ -4,13 +4,13 @@
   </div>
   <nav class="header-nav-wrap">
     <ul class="header-main-nav">
-    {{- $current := . }}
-    {{- range .Site.Menus.nav }}
+      {{- $current := . }}
+      {{- range .Site.Menus.nav }}
       {{ $active := or ($current.IsMenuCurrent "nav" .) (eq $current.Section (lower .Name)) }}
       <li class="{{ if $active  }}active{{ end }}">
         <a href="{{ .URL }}">{{ .Name }}</a>
       </li>
-    {{- end }}
+      {{- end }}
     </ul>
   </nav>
   <a class="header-menu-toggle" href="#"><span>Menu</span></a>

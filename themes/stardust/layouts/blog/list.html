@@ -7,33 +7,33 @@
 				<div class="grid-sizer"></div>
 				{{ $paginator := .Paginator }}
 				{{ range $paginator.Pages.ByDate.Reverse }}
-					{{ $src := .Params.cover }}
-					{{ $url := urls.Parse $src }}
-					{{ if (eq $url.Scheme "") }}
-						{{ $src = path.Join "/" (path.Join .File.Dir $src) }}
-					{{ end }}
-					<div class="grid-item">
-						<div class="grid-item--content">
-							<div class="blog-post">
-								<div class="blog-post--cover">
-									<a href="{{ .RelPermalink }}">
-										<img src="{{ $src }}" alt="{{ .Title | title }}" />
-									</a>
-								</div>
-								<div class="blog-post--preview">
-									<div class="blog-post--meta">
-										<span class="date">{{ dateFormat "2 Jan 2006" .Date}}</span>
+				{{ $src := .Params.cover }}
+				{{ $url := urls.Parse $src }}
+				{{ if (eq $url.Scheme "") }}
+				{{ $src = path.Join "/" (path.Join .File.Dir $src) }}
+				{{ end }}
+				<div class="grid-item">
+					<div class="grid-item--content">
+						<div class="blog-post">
+							<div class="blog-post--cover">
+								<a href="{{ .RelPermalink }}">
+									<img src="{{ $src }}" alt="{{ .Title | title }}" />
+								</a>
+							</div>
+							<div class="blog-post--preview">
+								<div class="blog-post--meta">
+									<span class="date">{{ dateFormat "2 Jan 2006" .Date}}</span>
 									{{ if .Params.metadata.author }}
-										<span class="author">by <a href="#">{{ .Params.metadata.author | title }}</a></span>
+									<span class="author">by <a href="#">{{ .Params.metadata.author | title }}</a></span>
 									{{ end }}
-									</div>
-									<h2 class="blog-post--title"><a href="{{ .RelPermalink }}">{{ .Title | title }}</a></h2>
-									<p class="blog-post--summary">{{ .Summary }}</p>
-									<a class="md-btn md-btn--outline-primary" href="{{ .RelPermalink }}">Read more</a>
 								</div>
+								<h2 class="blog-post--title"><a href="{{ .RelPermalink }}">{{ .Title | title }}</a></h2>
+								<p class="blog-post--summary">{{ .Summary }}</p>
+								<a class="md-btn md-btn--outline-primary" href="{{ .RelPermalink }}">Read more</a>
 							</div>
 						</div>
 					</div>
+				</div>
 				{{ end }}
 			</div>
 		</div>
