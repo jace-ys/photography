@@ -1601,18 +1601,18 @@ ul.header-main-nav li.active a {
 /* Posts */
 
 .post--content p {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 @media screen and (min-width: 1200px) {
   .post .container {
-    width: 80vw;
+    width: 85vw;
   }
 }
 
 @media screen and (max-width: 767px) {
   .post--content p {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     padding: 0;
   }
 }
