@@ -1,4 +1,4 @@
 +++
 title = "Blog"
-description = "Here I write about my adventures from around the world."
+description = "Here I write about photography and my adventures from around the world."
 +++
