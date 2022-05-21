@@ -1,4 +1,4 @@
 +++
 title = "Portfolio"
-description = "My portfolio of professional work done for clients and brands."
+description = "My portfolio of commercial work for clients and brands."
 +++

@@ -1,4 +1,4 @@
-baseURL = "https://jaceys.me"
+baseURL = "https://jaceystan.com"
 title = "Jaceys | Travel and Outdoor Photographer"
 theme = "stardust"
 paginate = 20
@@ -15,14 +15,14 @@ ionicon = "mail"
 
 [[params.social]]
 name = "twitter"
-href = "https://twitter.com/shotbyjaceys"
-text = "@shotbyjaceys"
+href = "https://twitter.com/jaceyst_"
+text = "@jaceyst_"
 ionicon = "logo-twitter"
 
 [[params.social]]
 name = "instagram"
-href = "https://instagram.com/jaceys_"
-text = "@jaceys_"
+href = "https://instagram.com/jaceyst_"
+text = "@jaceyst_"
 ionicon = "logo-instagram"
 
 [menu]
