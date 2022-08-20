@@ -1,7 +1,7 @@
 const shortcodes = {
   youtube: {
     id: "youtube",
-    label: "Youtube",
+    label: "Youtube Video",
     fields: [
       { name: "id", label: "Video ID", widget: "string" },
     ],
@@ -23,21 +23,21 @@ const shortcodes = {
     id: "landscape",
     label: "Landscape Image",
     fields: [
-      { name: "src", label: "Source", widget: "image" },
-      { name: "alt", label: "Alt", widget: "string" },
+      { name: "src", label: "Source", widget: "image", choose_url: false },
+      { name: "title", label: "Title", widget: "string" },
     ],
     pattern: /^{{< landscape "(\S+)" "(\S+)" >}}$/,
     fromBlock: function (match) {
       return {
         src: match[1],
-        alt: match[2],
+        title: match[2],
       };
     },
     toBlock: function (obj) {
-      return `{{< landscape "${obj.src}" "${obj.alt}" >}}`;
+      return `{{< landscape "${obj.src}" "${obj.title}" >}}`;
     },
     toPreview: function (obj) {
-      return `{{< landscape "${obj.src}" "${obj.alt}" >}}`;
+      return `{{< landscape "${obj.src}" "${obj.title}" >}}`;
     },
   },
 
@@ -45,21 +45,21 @@ const shortcodes = {
     id: "portrait",
     label: "Portrait Image",
     fields: [
-      { name: "src", label: "Source", widget: "image" },
-      { name: "alt", label: "Alt", widget: "string" },
+      { name: "src", label: "Source", widget: "image", choose_url: false },
+      { name: "title", label: "Title", widget: "string" },
     ],
     pattern: /^{{< portrait "(\S+)" "(\S+)" >}}$/,
     fromBlock: function (match) {
       return {
         src: match[1],
-        alt: match[2],
+        title: match[2],
       };
     },
     toBlock: function (obj) {
-      return `{{< portrait "${obj.src}" "${obj.alt}" >}}`;
+      return `{{< portrait "${obj.src}" "${obj.title}" >}}`;
     },
     toPreview: function (obj) {
-      return `{{< portrait "${obj.src}" "${obj.alt}" >}}`;
+      return `{{< portrait "${obj.src}" "${obj.title}" >}}`;
     },
   },
 }

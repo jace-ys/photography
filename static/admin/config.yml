@@ -1,7 +1,7 @@
 site_url: https://jaceystan.com
 publish_mode: editorial_workflow
-media_folder: static/img
-public_folder: /img
+media_folder: static/images
+public_folder: /images
 
 backend:
   name: git-gateway
@@ -13,21 +13,48 @@ editor:
   preview: false
 
 collections:
-  - label: "Section"
-    name: "section"
+  - label: "Config"
+    name: "config"
+    format: "toml"
+    files:
+      - label: "Hugo"
+        name: "hugo"
+        file: "config.toml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - {
+              label: "Params",
+              name: "params",
+              widget: "object",
+              fields:
+                [
+                  { label: "Description", name: "description", widget: "text" },
+                  { label: "Copyright", name: "copyright", widget: "string" },
+                  {
+                    label: "Social",
+                    name: "social",
+                    widget: "list",
+                    allow_add: true,
+                    fields:
+                      [
+                        { label: "Name", name: "name", widget: "string" },
+                        { label: "Href", name: "href", widget: "string" },
+                        { label: "Text", name: "text", widget: "string" },
+                        { label: "Ionicon", name: "ionicon", widget: "string" },
+                      ],
+                  },
+                ],
+            }
+
+  - label: "Sections"
+    name: "sections"
     format: "toml-frontmatter"
     files:
       - label: "Home"
         name: "home"
         file: "content/stills/_index.md"
         fields:
-          - {
-              label: "Title",
-              name: "title",
-              widget: "string",
-              default: "About",
-            }
-          - { label: "URL", name: "url", widget: "hidden", default: "/" }
+          - { label: "Title", name: "title", widget: "string" }
           - { label: "Headline", name: "headline", widget: "string" }
           - {
               label: "Typed",
@@ -37,63 +64,55 @@ collections:
               allow_add: true,
               field: { label: "Title", name: "title", widget: "string" },
             }
+
       - label: "Portfolio"
         name: "portfolio"
         file: "content/portfolio/_index.md"
         fields:
-          - {
-              label: "Title",
-              name: "title",
-              widget: "string",
-              default: "Portfolio",
-            }
-          - { label: "Description", name: "description", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+
       - label: "Blog"
         name: "blog"
         file: "content/blog/_index.md"
         fields:
-          - { label: "Title", name: "title", widget: "string", default: "Blog" }
-          - { label: "Description", name: "description", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+
       - label: "About"
         name: "about"
         file: "content/about/_index.md"
         fields:
+          - { label: "Title", name: "title", widget: "string" }
           - {
-              label: "Title",
-              name: "title",
-              widget: "string",
-              default: "About",
+              label: "Image",
+              name: "image",
+              widget: "image",
+              choose_url: false,
             }
-          - { label: "Image", name: "image", widget: "image" }
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
+
       - label: "Contact"
         name: "contact"
         file: "content/contact/_index.md"
         fields:
-          - {
-              label: "Title",
-              name: "title",
-              widget: "string",
-              default: "Contact",
-            }
-          - { label: "Description", name: "description", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
           - { label: "Location", name: "location", widget: "string" }
-          - { label: "Email", name: "email", widget: "string" }
-          - { label: "Instagram", name: "instagram", widget: "string" }
+
   - label: "Stills"
     name: "stills"
     format: "toml-frontmatter"
     folder: "content/stills"
-    slug: "{{slug}}/index"
-    path: "{{slug}}"
-    create: true
-    delete: false
+    preview_path: "stills/{{dirname}}"
+    filter: { field: "cms", value: true }
     nested:
       depth: 2
+    create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
       - {
           label: "Date",
           name: "date",
@@ -101,38 +120,22 @@ collections:
           time_format: false,
           picker_utc: true,
         }
-      - { label: "Cover Image", name: "cover", widget: "image" }
-      - { label: "Body", name: "body", widget: "markdown" }
-  - label: "Portfolio"
-    name: "portfolio"
-    preview_path: "portfolio"
-    format: "toml-frontmatter"
-    folder: "content/portfolio"
-    slug: "{{slug}}/index"
-    path: "{{slug}}"
-    create: true
-    delete: false
-    nested:
-      depth: 2
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
       - {
-          label: "Date",
-          name: "date",
-          widget: "datetime",
-          time_format: false,
-          picker_utc: true,
+          label: "Cover Image",
+          name: "cover",
+          widget: "image",
+          choose_url: false,
         }
-      - { label: "Cover Image", name: "cover", widget: "image" }
+      - { label: "CMS", name: "cms", widget: "hidden", default: true }
       - { label: "Body", name: "body", widget: "markdown" }
+
   - label: "Videos"
     name: "videos"
-    preview_path: "videos"
     format: "toml-frontmatter"
     folder: "content/videos"
+    preview_path: "videos"
+    filter: { field: "cms", value: true }
     create: true
-    delete: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - {
@@ -142,18 +145,46 @@ collections:
           time_format: false,
           picker_utc: true,
         }
+      - { label: "CMS", name: "cms", widget: "hidden", default: true }
       - { label: "Body", name: "body", widget: "markdown" }
-  - label: "Blog"
-    name: "blog"
-    preview_path: "blog"
+
+  - label: "Portfolio"
+    name: "portfolio"
     format: "toml-frontmatter"
-    folder: "content/blog"
-    slug: "{{slug}}/index"
-    path: "{{slug}}"
-    create: true
-    delete: false
+    folder: "content/portfolio"
+    preview_path: "portfolio/{{dirname}}"
+    filter: { field: "cms", value: true }
     nested:
       depth: 2
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          time_format: false,
+          picker_utc: true,
+        }
+      - {
+          label: "Cover Image",
+          name: "cover",
+          widget: "image",
+          choose_url: false,
+        }
+      - { label: "CMS", name: "cms", widget: "hidden", default: true }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - label: "Blog"
+    name: "blog"
+    format: "toml-frontmatter"
+    folder: "content/blog"
+    preview_path: "blog/{{dirname}}"
+    filter: { field: "cms", value: true }
+    nested:
+      depth: 2
+    create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - {
@@ -163,19 +194,25 @@ collections:
           time_format: false,
           picker_utc: true,
         }
-      - { label: "Cover Image", name: "cover", widget: "image" }
+      - {
+          label: "Cover Image",
+          name: "cover",
+          widget: "image",
+          choose_url: false,
+        }
       - {
           label: "Metadata",
           name: "metadata",
-          widget: "hidden",
+          widget: "object",
           fields:
             [
               {
                 label: "Author",
                 name: "author",
                 widget: "string",
-                default: "",
+                default: "Jace Tan",
               },
             ],
         }
+      - { label: "CMS", name: "cms", widget: "hidden", default: true }
       - { label: "Body", name: "body", widget: "markdown" }

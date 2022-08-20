@@ -5,7 +5,7 @@
       <div class="page-header--meta">
         <span class="date">{{ dateFormat "2 Jan 2006" .Date }}</span>
         {{ if .Params.metadata.author }}
-        <span class="author">by <a href="#">{{ .Params.metadata.author | title }}</a></span>
+        <span class="author">by <a>{{ .Params.metadata.author | title }}</a></span>
         {{ end }}
       </div>
       {{ end}}

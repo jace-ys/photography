@@ -7,9 +7,6 @@
         {{ range $paginator.Pages.ByDate.Reverse }}
         {{ $src := .Params.cover }}
         {{ $url := urls.Parse $src }}
-        {{ if (eq $url.Scheme "") }}
-        {{ $src = path.Join "/" (path.Join .File.Dir $src) }}
-        {{ end }}
         <div class="grid-item">
           <div class="grid-item--content">
             <div class="album">

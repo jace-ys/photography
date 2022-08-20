@@ -1,6 +1,6 @@
 +++
 title = "About"
-image = "/img/jaceys.jpg"
+image = "/images/jaceys.jpg"
 name = "Jace Tan"
 +++
 
