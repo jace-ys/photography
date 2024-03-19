@@ -33,12 +33,6 @@ name = "Stills"
 url = "/"
 weight = "1"
 
-# [[menu.nav]]
-# identifier = "videos"
-# name = "Videos"
-# url = "/videos/"
-# weight = "2"
-
 [[menu.nav]]
 identifier = "portfolio"
 name = "Portfolio"

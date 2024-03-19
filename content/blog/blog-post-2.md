@@ -2,7 +2,7 @@
 title = "Blog Post 2"
 date = 2021-05-14T09:33:16.512Z
 cover = "https://images.squarespace-cdn.com/content/v1/5f5fff3f48fbf219112829fa/1600134559875-U1MJXY00KXBDVTQNX2WZ/_MG_4024.jpg?format=2500w"
-cms = true
+collection = true
 
 [metadata]
 author = "Jace Tan"

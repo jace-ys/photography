@@ -1610,8 +1610,8 @@ ul.header-main-nav li.active a {
 }
 
 @media screen and (min-width: 1200px) {
-  .post .container {
-    width: 85vw;
+  .post .section .container {
+    width: 75vw;
   }
 }
 
