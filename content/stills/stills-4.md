@@ -7,4 +7,4 @@ collection = true
 +++
 {{< portrait "https://res.cloudinary.com/jaceystan/image/upload/v1710886452/USA/7R306207.jpg" "undefined" >}}
 
-{{< portrait "" "undefined" >}}
+{{< portrait "https://res.cloudinary.com/jaceystan/image/upload/v1710886452/USA/7R306207.jpg" "undefined" >}}
