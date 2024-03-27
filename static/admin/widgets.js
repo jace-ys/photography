@@ -24,20 +24,18 @@ const shortcodes = {
     label: "Landscape Image",
     fields: [
       { name: "src", label: "Source", widget: "image", choose_url: false },
-      { name: "title", label: "Title", widget: "string" },
     ],
-    pattern: /^{{< landscape "(\S+)" "(\S+)" >}}$/,
+    pattern: /^{{< landscape "(\S+)" >}}$/,
     fromBlock: function (match) {
       return {
         src: match[1],
-        title: match[2],
       };
     },
     toBlock: function (obj) {
-      return `{{< landscape "${obj.src}" "${obj.title}" >}}`;
+      return `{{< landscape "${obj.src}" >}}`;
     },
     toPreview: function (obj) {
-      return `{{< landscape "${obj.src}" "${obj.title}" >}}`;
+      return `{{< landscape "${obj.src}" >}}`;
     },
   },
 
@@ -46,20 +44,18 @@ const shortcodes = {
     label: "Portrait Image",
     fields: [
       { name: "src", label: "Source", widget: "image", choose_url: false },
-      { name: "title", label: "Title", widget: "string" },
     ],
-    pattern: /^{{< portrait "(\S+)" "(\S+)" >}}$/,
+    pattern: /^{{< portrait "(\S+)" >}}$/,
     fromBlock: function (match) {
       return {
         src: match[1],
-        title: match[2],
       };
     },
     toBlock: function (obj) {
-      return `{{< portrait "${obj.src}" "${obj.title}" >}}`;
+      return `{{< portrait "${obj.src}" >}}`;
     },
     toPreview: function (obj) {
-      return `{{< portrait "${obj.src}" "${obj.title}" >}}`;
+      return `{{< portrait "${obj.src}" >}}`;
     },
   },
 }

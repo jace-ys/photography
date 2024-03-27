@@ -6,11 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier --write \"public/**/*.html\"",
-    "build-dev": "hugo -D && npm run prettier",
+    "dev": "hugo -D server & npx decap-server",
     "build": "hugo && npm run prettier",
-    "serve-dev": "hugo -D server",
-    "serve": "serve public",
-    "cms": "npx decap-server"
+    "serve": "serve public"
   },
   "author": "",
   "license": "ISC",
