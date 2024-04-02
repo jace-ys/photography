@@ -1,7 +1,7 @@
 +++
 title = "{{ replace .Name "-" " " | title }}"
 description = "Justo eget magna fermentum iaculis eu non diam phasellus vestibulum."
-date = {{ now.UTC.Format "2006-01-02T15:04:05.000Z" }}
+date = {{ now.UTC.Format "2006-01-02T15:04:05.000Z" | quote }}
 cover = "/images/jaceys.jpg"
 collection = true
 +++

@@ -3,7 +3,10 @@ title = "About"
 image = "/images/jaceys.jpg"
 name = "Jace Tan"
 +++
+Hey there 👋 I'm Jace, a travel and outdoor photographer based in the UK, dedicated to capturing moments based around landscapes, lifestyle, and adventure.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam non quam lacus suspendisse faucibus interdum posuere. Adipiscing vitae proin sagittis nisl rhoncus. Tristique sollicitudin nibh sit amet commodo. Elementum curabitur vitae nunc sed velit dignissim sodales ut eu. Aliquet eget sit amet tellus cras adipiscing.
+Originally born and bred on the little island of Singapore, I picked up a camera when I first moved to the UK in 2016 and fell in love with photography ever since. I started off with the Olympus OM-D E-M10 Mark II but nowadays I mostly use a Sony kit for my work.
 
-Leo vel fringilla est ullamcorper eget nulla facilisi etiam. Ultricies mi quis hendrerit dolor magna. At ultrices mi tempus imperdiet nulla malesuada pellentesque elit. Vulputate mi sit amet mauris commodo quis imperdiet. Dictum fusce ut placerat orci. Id eu nisl nunc mi ipsum faucibus vitae aliquet. Posuere ac ut consequat semper. Sed risus ultricies tristique nulla aliquet enim. Nibh ipsum consequat nisl vel pretium lectus quam. Odio pellentesque diam volutpat commodo sed.
+From exploring destinations filled with scenic landscapes like Norway, Iceland, Madeira, and Dolomites, I've come to love the great outdoors and nature. It's become a mission of mine to capture these beautiful scenes and bring them to life through inspiring and captivating imagery.
+
+If you would like to collaborate, please [drop me a message](/contact)!
