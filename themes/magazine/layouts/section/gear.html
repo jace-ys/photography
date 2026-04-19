@@ -1,0 +1,22 @@
+{{ define "main" }}
+{{ partial "banner.html" . }}
+<section class="section gear-section">
+  <div class="container">
+    {{ range $i, $cat := .Params.categories }}
+    <div class="gear-category">
+      <div class="gear-category--header">
+        <span class="gear-category--name">{{ $cat.name }}</span>
+      </div>
+      <div class="gear-grid">
+        {{ range $cat.items }}
+        <div class="gear-card">
+          <span class="gear-card--name">{{ .name }}</span>
+          {{ if .note }}<span class="gear-card--note">{{ .note }}</span>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

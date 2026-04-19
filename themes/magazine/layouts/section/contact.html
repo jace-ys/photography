@@ -1,0 +1,44 @@
+{{ define "main" }}
+{{ partial "banner.html" . }}
+<section class="section contact-page">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info">
+        {{ if .Params.location }}
+        <div class="contact-meta--item">
+          <span class="contact-meta--label">Based in</span>
+          <span class="contact-meta--value">{{ .Params.location }}</span>
+        </div>
+        {{ end }}
+        {{ range .Site.Params.social }}
+        <div class="contact-meta--item">
+          <span class="contact-meta--label">{{ .name }}</span>
+          <a class="contact-meta--value" href="{{ .href }}">{{ .text }}</a>
+        </div>
+        {{ end }}
+      </div>
+      <div class="contact-form-wrap">
+        <form class="form-wrapper form-wrapper--minimal" name="contact" method="POST" netlify>
+          <div class="form-row-2">
+            <div class="form-item">
+              <input class="form-control" type="text" name="name" placeholder="Name" required />
+            </div>
+            <div class="form-item">
+              <input class="form-control" type="email" name="email" placeholder="Email" required />
+            </div>
+          </div>
+          <div class="form-item">
+            <input class="form-control" type="text" name="subject" placeholder="Subject" required />
+          </div>
+          <div class="form-item">
+            <textarea class="form-control" name="message" placeholder="Message" required></textarea>
+          </div>
+          <div class="form-item">
+            <button class="md-btn md-btn--outline-primary" type="submit">Send message →</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -20,40 +20,32 @@ media_library:
     api_key: 634315473442474
 
 collections:
-  - label: "Config"
-    name: "config"
+  - label: "Hugo"
+    name: "hugo"
     format: "toml"
     files:
-      - label: "Hugo"
-        name: "hugo"
+      - label: "Configuration"
+        name: "configuration"
         file: "config.toml"
         fields:
           - { label: "URL", name: "baseURL", widget: "string" }
           - { label: "Title", name: "title", widget: "string" }
-          - {
-              label: "Params",
-              name: "params",
-              widget: "object",
-              fields:
-                [
-                  { label: "Description", name: "description", widget: "text" },
-                  { label: "Copyright", name: "copyright", widget: "string" },
-                  {
-                    label: "Social",
-                    name: "social",
-                    widget: "list",
-                    collapsed: false,
-                    allow_add: true,
-                    fields:
-                      [
-                        { label: "Name", name: "name", widget: "string" },
-                        { label: "Href", name: "href", widget: "string" },
-                        { label: "Text", name: "text", widget: "string" },
-                        { label: "Ionicon", name: "ionicon", widget: "string" },
-                      ],
-                  },
-                ],
-            }
+          - label: "Params"
+            name: "params"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Copyright", name: "copyright", widget: "string" }
+              - label: "Social"
+                name: "social"
+                widget: "list"
+                collapsed: false
+                allow_add: true
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "Ionicon", name: "ionicon", widget: "string" }
 
   - label: "Sections"
     name: "sections"
@@ -66,14 +58,12 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Headline", name: "headline", widget: "string" }
-          - {
-              label: "Typed",
-              name: "typed",
-              widget: "list",
-              collapsed: false,
-              allow_add: true,
-              field: { label: "Title", name: "title", widget: "string" },
-            }
+          - label: "Typed"
+            name: "typed"
+            widget: "list"
+            collapsed: false
+            allow_add: true
+            field: { label: "Title", name: "title", widget: "string" }
 
       - label: "Portfolio"
         name: "portfolio"
@@ -101,12 +91,7 @@ collections:
         file: "content/about/_index.md"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - {
-              label: "Image",
-              name: "image",
-              widget: "image",
-              choose_url: false,
-            }
+          - { label: "Image", name: "image", widget: "image", choose_url: false }
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
 
@@ -118,33 +103,48 @@ collections:
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Location", name: "location", widget: "string" }
 
+      - label: "Gear"
+        name: "gear"
+        file: "content/gear/_index.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            collapsed: false
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Note", name: "note", widget: "string", required: false }
+
   - label: "Stills"
     name: "stills"
     format: "toml-frontmatter"
     folder: "content/stills"
     preview_path: "stills/{{slug}}"
     filter: { field: "collection", value: true }
-    nested:
-      depth: 2
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
-      - {
-          label: "Date",
-          name: "date",
-          widget: "datetime",
-          time_format: false,
-          picker_utc: true,
-        }
-      - {
-          label: "Cover Image",
-          name: "cover",
-          widget: "image",
-          choose_url: false,
-        }
+      - { label: "Date", name: "date", widget: "datetime", time_format: false, picker_utc: true }
+      - { label: "Cover Image", name: "cover", widget: "image", choose_url: false }
+      - { label: "Location", name: "location", widget: "string", required: false, hint: "Place name used for the destinations map. Defaults to the album title if blank." }
+      - { label: "Tags", name: "tags", widget: "list", required: false, field: { label: "Tag", name: "tag", widget: "string" } }
       - { label: "Collection", name: "collection", widget: "hidden", default: true }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        collapsed: false
+        fields:
+          - { label: "Image", name: "src", widget: "image", choose_url: false }
+          - { label: "Orientation", name: "orientation", widget: "select", options: ["portrait", "landscape"], default: "landscape" }
+          - { label: "Caption", name: "caption", widget: "string", required: false }
 
   - label: "Videos"
     name: "videos"
@@ -155,13 +155,7 @@ collections:
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - {
-          label: "Date",
-          name: "date",
-          widget: "datetime",
-          time_format: false,
-          picker_utc: true,
-        }
+      - { label: "Date", name: "date", widget: "datetime", time_format: false, picker_utc: true }
       - { label: "Collection", name: "collection", widget: "hidden", default: true }
       - { label: "Body", name: "body", widget: "markdown" }
 
@@ -171,27 +165,21 @@ collections:
     folder: "content/portfolio"
     preview_path: "portfolio/{{slug}}"
     filter: { field: "collection", value: true }
-    nested:
-      depth: 2
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
-      - {
-          label: "Date",
-          name: "date",
-          widget: "datetime",
-          time_format: false,
-          picker_utc: true,
-        }
-      - {
-          label: "Cover Image",
-          name: "cover",
-          widget: "image",
-          choose_url: false,
-        }
+      - { label: "Date", name: "date", widget: "datetime", time_format: false, picker_utc: true }
+      - { label: "Cover Image", name: "cover", widget: "image", choose_url: false }
       - { label: "Collection", name: "collection", widget: "hidden", default: true }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        collapsed: false
+        fields:
+          - { label: "Image", name: "src", widget: "image", choose_url: false }
+          - { label: "Orientation", name: "orientation", widget: "select", options: ["portrait", "landscape"], default: "landscape" }
+          - { label: "Caption", name: "caption", widget: "string", required: false }
 
   - label: "Blog"
     name: "blog"
@@ -199,37 +187,23 @@ collections:
     folder: "content/blog"
     preview_path: "blog/{{slug}}"
     filter: { field: "collection", value: true }
-    nested:
-      depth: 2
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - {
-          label: "Date",
-          name: "date",
-          widget: "datetime",
-          time_format: false,
-          picker_utc: true,
-        }
-      - {
-          label: "Cover Image",
-          name: "cover",
-          widget: "image",
-          choose_url: false,
-        }
-      - {
-          label: "Metadata",
-          name: "metadata",
-          widget: "object",
-          fields:
-            [
-              {
-                label: "Author",
-                name: "author",
-                widget: "string",
-                default: "Jace Tan",
-              },
-            ],
-        }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Date", name: "date", widget: "datetime", time_format: false, picker_utc: true }
+      - { label: "Cover Image", name: "cover", widget: "image", choose_url: false }
+      - label: "Metadata"
+        name: "metadata"
+        widget: "object"
+        fields:
+          - { label: "Author", name: "author", widget: "string", default: "Jace Tan" }
       - { label: "Collection", name: "collection", widget: "hidden", default: true }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        collapsed: false
+        fields:
+          - { label: "Image", name: "src", widget: "image", choose_url: false }
+          - { label: "Orientation", name: "orientation", widget: "select", options: ["portrait", "landscape"], default: "landscape" }
+          - { label: "Caption", name: "caption", widget: "string", required: false }

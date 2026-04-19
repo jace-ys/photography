@@ -1,0 +1,14 @@
+<footer class="footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">&copy; {{ .Site.Params.Copyright }} {{ dateFormat "2006" now }}</p>
+    <ul class="footer-social">
+      {{ range .Site.Params.social }}
+      <li>
+        <a href="{{ .href }}" aria-label="{{ .name }}">
+          <ion-icon name="{{ .ionicon }}"></ion-icon>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</footer>

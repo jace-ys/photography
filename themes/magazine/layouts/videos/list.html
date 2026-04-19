@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ partial "banner.html" . }}
+<section class="section videos-page">
+  <div class="container">
+    <div class="videos-grid">
+      {{ range .RegularPages.ByDate.Reverse }}
+      <div class="video-card">
+        <div class="video-card--embed">
+          {{ .Content }}
+        </div>
+        <h3 class="video-card--title">{{ .Title | title }}</h3>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="post">
+  <div class="album-header">
+    <div class="container">
+      <h1 class="album-header--title">{{ .Title | title }}</h1>
+      {{ if .Description }}
+      <p class="album-header--desc">{{ .Description }}</p>
+      {{ end }}
+      <div class="album-header--rule"></div>
+    </div>
+  </div>
+  <section class="section album-section">
+    <div class="container album-container">
+      {{ if .Params.images }}
+      <div class="post--content">
+        {{ range .Params.images }}
+        {{ if eq .orientation "landscape" }}
+        <p class="col-md-12"><img src="{{ .src }}" alt="{{ .caption }}" /></p>
+        {{ else }}
+        <p class="col-md-6"><img src="{{ .src }}" alt="{{ .caption }}" /></p>
+        {{ end }}
+        {{ end }}
+      </div>
+      {{ else }}
+      <div class="post--content">
+        {{ .Content }}
+      </div>
+      {{ end }}
+    </div>
+  </section>
+</div>
+{{ end }}
