@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="about-page">
+  <div class="about-spread">
+    <div class="about-spread--photo">
+      <img src="{{ .Params.image }}" alt="{{ .Params.name }}">
+    </div>
+    <div class="about-spread--content">
+      <p class="about-spread--eyebrow">About</p>
+      <h1 class="about-spread--name">{{ .Params.name }}</h1>
+      <div class="about-spread--rule"></div>
+      <div class="about-spread--bio">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

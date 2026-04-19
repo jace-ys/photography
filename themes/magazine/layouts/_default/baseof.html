@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+{{ partial "head.html" . }}
+
+<body class="js-loading">
+  <div id="root">
+    {{ partial "header.html" . }}
+    <nav class="header-nav-wrap" id="site-nav">
+      <ul class="header-main-nav">
+        {{- $current := . }}
+        {{- range .Site.Menus.nav }}
+        {{ $active := or ($current.IsMenuCurrent "nav" .) (eq $current.Section (lower .Name)) }}
+        <li class="{{ if $active }}active{{ end }}">
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+        {{- end }}
+      </ul>
+    </nav>
+    <div id="content">
+      {{ block "main" . }}{{ end }}
+    </div>
+    {{ partial "footer.html" . }}
+  </div>
+  {{ partial "scripts.html" . }}
+</body>
+
+</html>

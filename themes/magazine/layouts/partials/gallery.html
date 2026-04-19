@@ -1,0 +1,22 @@
+<section class="gallery-section">
+  <div class="gallery-wrap">
+    <div class="masonry" data-col-xl="3" data-col-lg="2" data-col-md="2" data-gap="4">
+      <div class="grid">
+        <div class="grid-sizer"></div>
+        {{ range .RegularPages.ByDate.Reverse }}
+        {{ $src := .Params.cover }}
+        <div class="grid-item">
+          <div class="grid-item--content">
+            <a class="gallery-card" href="{{ .RelPermalink }}">
+              <img src="{{ $src }}" alt="{{ .Title | title }}" />
+              <div class="gallery-card--overlay">
+                <span class="gallery-card--title">{{ .Title | title }}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

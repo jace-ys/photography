@@ -1,0 +1,100 @@
+{{ define "main" }}
+{{ partial "banner.html" . }}
+
+{{ $albums := slice }}
+{{ range .Site.RegularPages }}
+  {{ if and (eq .Section "stills") (.Params.collection) }}
+    {{ $lat := "" }}
+    {{ $lng := "" }}
+
+    {{ if not (and $lat $lng) }}
+      {{ $query := .Params.location | default .Title }}
+      {{ $url := printf "https://nominatim.openstreetmap.org/search?q=%s&format=json&limit=1" ($query | urlquery) }}
+      {{ $opts := dict "headers" (dict "User-Agent" "jaceystan.com photography portfolio") }}
+      {{ with try (resources.GetRemote $url $opts) }}
+        {{ if .Err }}
+          {{ warnf "Destinations: network error geocoding '%s': %s" $query .Err }}
+        {{ else }}
+          {{ with .Value | transform.Unmarshal }}
+            {{ if gt (len .) 0 }}
+              {{ with index . 0 }}
+                {{ $lat = .lat | float }}
+                {{ $lng = .lon | float }}
+              {{ end }}
+            {{ else }}
+              {{ warnf "Destinations: no geocoding results for '%s' — set the Location field in the CMS for a more specific query." $query }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{ if and $lat $lng }}
+      {{ $orientation := "landscape" }}
+      {{ if .Params.images }}
+        {{ $coverSrc := .Params.cover }}
+        {{ $found := false }}
+        {{ range .Params.images }}
+          {{ if and (not $found) (eq .src $coverSrc) }}
+            {{ $orientation = .orientation | default "landscape" }}
+            {{ $found = true }}
+          {{ end }}
+        {{ end }}
+        {{ if not $found }}
+          {{ $orientation = (index .Params.images 0).orientation | default "landscape" }}
+        {{ end }}
+      {{ end }}
+      {{ $album := dict "title" .Title "url" .RelPermalink "cover" .Params.cover "lat" $lat "lng" $lng "orientation" $orientation }}
+      {{ $albums = $albums | append $album }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<div id="destinations-map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  (function () {
+    var albums = {{ $albums | jsonify | safeJS }};
+
+    var map = L.map("destinations-map", {
+      center: [30, 15],
+      zoom: 2,
+      zoomControl: true,
+      scrollWheelZoom: false,
+    });
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 19,
+    }).addTo(map);
+
+    var markerIcon = L.divIcon({
+      className: "destinations-marker",
+      html: "<span></span>",
+      iconSize: [12, 12],
+      iconAnchor: [6, 6],
+      popupAnchor: [0, -10],
+    });
+
+    albums.forEach(function (album) {
+      var isPortrait = album.orientation === "portrait";
+      var popup = L.popup({
+        className: "destinations-popup destinations-popup--" + album.orientation,
+        maxWidth: isPortrait ? 160 : 220,
+      }).setContent(
+        '<a href="' + album.url + '" class="destinations-popup--inner">' +
+          '<div class="destinations-popup--cover">' +
+            '<img src="' + album.cover + '" alt="" />' +
+            '<div class="destinations-popup--overlay">' +
+              '<h3 class="destinations-popup--title">' + album.title + '</h3>' +
+            '</div>' +
+          '</div>' +
+        '</a>'
+      );
+      L.marker([album.lat, album.lng], { icon: markerIcon }).addTo(map).bindPopup(popup);
+    });
+
+  })();
+</script>
+{{ end }}
